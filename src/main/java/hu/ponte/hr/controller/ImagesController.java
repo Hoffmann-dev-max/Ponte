@@ -1,7 +1,5 @@
 package hu.ponte.hr.controller;
 
-
-import hu.ponte.hr.controller.upload.UploadController;
 import hu.ponte.hr.services.ImageStore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +38,7 @@ public class ImagesController {
 
     @GetMapping("preview/{id}")
     public  ResponseEntity<?> getImage(@PathVariable("id") String id) {
-        logger.info("ImagesController.getImage() with id {}", id);
+        logger.info("ImagesController.getImage() with id:{}", id);
 
         ImageMeta imageMeta = imageStore.getImage(Long.parseLong(id));
 
