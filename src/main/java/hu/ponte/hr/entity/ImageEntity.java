@@ -6,6 +6,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+/**
+ * Entity class to store images with additional information in database
+ *
+ * @author  Zoltán Hoffmann
+ * @version 1.0
+ * @since   2023-08-07
+ */
+
 @Entity
 @Table(name = "image")
 @Data

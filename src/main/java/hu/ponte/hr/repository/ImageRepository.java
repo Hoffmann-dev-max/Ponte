@@ -2,7 +2,6 @@ package hu.ponte.hr.repository;
 
 import hu.ponte.hr.entity.ImageEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.domain.Sort;
 
 import java.util.List;
 import java.util.Optional;
