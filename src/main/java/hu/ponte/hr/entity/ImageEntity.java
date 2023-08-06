@@ -19,10 +19,12 @@ public class ImageEntity {
     private String name;
     private String mimeType;
     private Long size;
+
+    @Column(length = 500)
     private String digitalSign;
 
     @Lob
-    @Column(name = "data", length = 1000)
+    @Column(name = "data", length = 2000000)
     @Basic(fetch = FetchType.LAZY)
     private byte[] data;
 

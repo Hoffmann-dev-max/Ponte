@@ -29,7 +29,7 @@ public class ImagesController {
 
     @GetMapping("preview/{id}")
     public  ResponseEntity<?> getImage(@PathVariable("id") String id) {
-        ImageMeta imageMeta = imageStore.getImage(id);
+        ImageMeta imageMeta = imageStore.getImage(Long.parseLong(id));
 
         return ResponseEntity.status(HttpStatus.OK)
                 .contentType(MediaType.valueOf(imageMeta.getMimeType()))

@@ -24,15 +24,18 @@ public class ImageStore {
     @Autowired
     private ImageRepository imageRepository;
 
+    @Autowired
+    private SignService signService;
+
     @Transactional
-    public ImageMeta uploadImage(MultipartFile file) throws IOException {
+    public ImageMeta uploadImage(MultipartFile file) throws Exception {
 
         byte[] imageData = file.getBytes();
-
         ImageMeta imageMeta = ImageMeta.builder()
                 .name(file.getOriginalFilename())
                 .mimeType(file.getContentType())
-                .size(imageData.length).build();
+                .size(imageData.length)
+                .digitalSign(signService.signSHA256RSA(imageData)).build();
 
         ImageEntity imageEntity = imageMapper.toEntity(imageMeta);
         imageEntity.setData(imageData);
@@ -42,7 +45,7 @@ public class ImageStore {
         return imageMeta;
     }
 
-    public ImageMeta getImage(String id) {
+    public ImageMeta getImage(Long id) {
         Optional<ImageEntity> dbImage = imageRepository.findById(id);
         return imageMapper.toDto(dbImage.get());
     }
